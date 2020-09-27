@@ -13,6 +13,7 @@ header nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 2;
 }
 
 header nav a {
@@ -77,6 +78,7 @@ footer nav {
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 2;
 }
 
 footer nav a {
@@ -103,7 +105,7 @@ footer nav a .iconeFooter {
 
 .mainPageSondage>div:first-child {
     padding: 2vh 2vh 2vh 2vh;
-    background-color: red;
+    background-color: pink;
     position: fixed;
     width: 100%;
     top: 50px;
@@ -129,7 +131,7 @@ footer nav a .iconeFooter {
 
 .mainPageSondage section div:nth-child(2) {
     padding: 0 2vh 2vh 2vh;
-    background-color: red;
+    background-color: green;
     display: flex;
     justify-content: space-around;
 }
@@ -140,4 +142,56 @@ footer nav a .iconeFooter {
 
 .mainPageSondage section>button {
     margin-bottom: 2vh;
+}
+
+/* main page leaderbord */
+.mainPageLeaderbord section {
+    background-color: magenta;
+    padding: 6vh 0 8vh 0;
+    width: 100%;
+    top: 0vh;
+}
+
+.beyondLeaderbord {
+    background-color: magenta;
+    padding: 5vh;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+}
+
+.bellowLeaderbord {
+    background-color: magenta;
+    padding: 5vh;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.mainPageLeaderbord .leaderbord {
+    background-color: green;
+    margin-top: 4vh;
+}
+
+.mainPageLeaderbord .leaderbord>div:first-child {
+    background-color: blue;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    width: 90%;
+}
+
+.mainPageLeaderbord .leaderbord>div:first-child button {
+    margin: 1vh 0 1vh 0;
+}
+
+.mainPageLeaderbord .leaderbord>div:last-child {
+    padding: 6vh 1vh 1vh 1vh;
+}
+
+.mainPageLeaderbord .leaderbord>div:last-child div {
+    background-color: pink;
+    margin-bottom: 1vh;
 }
