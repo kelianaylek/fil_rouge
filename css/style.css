@@ -25,6 +25,32 @@ header nav a {
     text-decoration: none;
 }
 
+/* btn de recherche */
+.mainPagePrincipale .recherche {
+    padding: 6.5vh 0 1vh 0;
+    display: flex;
+    align-items: center;
+    background-color: #272625;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.mainPagePrincipale .recherche input {
+    outline: none;
+    width: 80%;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    padding: 2px;
+}
+
+.mainPagePrincipale .recherche button {
+    border: none;
+    background-color: #fff;
+    border-radius: 0 5px 5px 0;
+    padding: 2px;
+
+}
+
 /* main content page principale */
 .mainPagePrincipale {
     background-color: #e3dede;
@@ -39,9 +65,9 @@ header nav a {
     padding-bottom: 2vh;
 }
 
-.mainPagePrincipale section:first-child {
+/* .mainPagePrincipale section:first-child {
     padding-top: 8vh;
-}
+} */
 
 .mainPagePrincipale section:last-child {
     padding-bottom: 8vh;
@@ -95,7 +121,8 @@ header nav a {
     border-radius: 0 0 5px 5px;
 }
 
-.mainPagePrincipale .sondageResultats button {
+.mainPagePrincipale .sondageResultats button,
+.mainPageSondage section button {
     background-color: #dae9f4;
     border: none;
     border-radius: 2px;
@@ -109,7 +136,8 @@ header nav a {
     /* transition: background-color 0.5s, color 1s ease; */
 }
 
-.mainPagePrincipale .sondageResultats button:hover {
+.mainPagePrincipale .sondageResultats button:hover,
+.mainPageSondage section button:hover {
     background-color: rgba(3, 201, 169, 1);
     color: #000;
 }
@@ -146,22 +174,66 @@ footer nav a .iconeFooter {
 
 /* main content page sondage */
 .mainPageSondage {
-    background-color: rgb(176, 196, 222);
+    background-color: #e3dede;
     padding: 2vh 0 2vh 0;
 }
 
 .mainPageSondage>div:first-child {
     padding: 2vh 2vh 2vh 2vh;
-    background-color: pink;
+    background-color: #9a9a9b;
     position: fixed;
     width: 100%;
     top: 50px;
 }
 
+.mainPageSondage>div:first-child h1 {
+    color: #000;
+}
+
+.mainPageSondage>div:first-child h2 {
+    color: rgb(214, 214, 214);
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+
+
 .mainPageSondage section {
-    background-color: blue;
+    background-color: #5e5e5f;
     margin-bottom: 2vh;
     text-align: center;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.mainPageSondage section>div {
+    display: flex;
+    align-items: baseline;
+    padding: 2vh;
+    justify-content: space-between;
+}
+
+.mainPageSondage section>div h3 {
+    display: flex;
+    align-items: baseline;
+    margin-right: 6px;
+    text-align: left;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.mainPageSondage section>div>div {
+    display: flex;
+}
+
+.mainPageSondage section>div i {
+    padding-left: 1px;
+}
+
+.mainPageSondage section>div .fa-star {
+    color: rgba(3, 201, 169, 1);
+}
+
+.mainPageSondage section>div .fa-star-o {
+    color: #fff;
 }
 
 .mainPageSondage section:nth-child(2) {
@@ -172,23 +244,13 @@ footer nav a .iconeFooter {
     margin-bottom: 6vh;
 }
 
-.mainPageSondage section div {
-    padding: 2vh;
-}
-
-.mainPageSondage section div:nth-child(2) {
-    padding: 0 2vh 2vh 2vh;
-    background-color: green;
+.mainPageSondage section>div:nth-child(2) {
+    padding: 1vh;
+    background-color: #3f4040;
     display: flex;
     justify-content: space-around;
-}
+    border-radius: 0px 0px 5px 5px;
 
-.mainPageSondage section div:first-child {
-    display: flex;
-}
-
-.mainPageSondage section>button {
-    margin-bottom: 2vh;
 }
 
 /* main page leaderbord */
