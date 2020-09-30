@@ -4,6 +4,10 @@
     font-family: "Open Sans", sans-serif;
 }
 
+body {
+    background-color: #e3dede;
+}
+
 /* nav du header */
 header nav {
     overflow: hidden;
@@ -27,6 +31,11 @@ header nav a {
     align-items: center;
 }
 
+header nav div:first-child a:nth-child(2),
+header nav div:first-child a:nth-child(3) {
+    display: none;
+}
+
 header nav .fa-star {
     color: rgba(3, 201, 169, 1);
     padding-left: 4px;
@@ -34,7 +43,7 @@ header nav .fa-star {
 
 /* btn de recherche */
 .mainPagePrincipale .recherche {
-    padding: 6.5vh 0 1vh 0;
+    padding: 9vh 0 1vh 0;
     display: flex;
     align-items: center;
     background-color: #272625;
@@ -201,6 +210,11 @@ footer nav a .iconeFooter:hover {
     padding: 2vh 0 2vh 0;
 }
 
+.mainPageSondage .colonnesPageSondage {
+    margin-top: 19vh;
+    margin-bottom: 6vh;
+}
+
 .mainPageSondage>div:first-child {
     padding: 2vh 2vh 2vh 2vh;
     background-color: #9a9a9b;
@@ -257,14 +271,6 @@ footer nav a .iconeFooter:hover {
 
 .mainPageSondage section>div .fa-star-o {
     color: #fff;
-}
-
-.mainPageSondage section:nth-child(2) {
-    margin-top: 19vh;
-}
-
-.mainPageSondage section:last-child {
-    margin-bottom: 6vh;
 }
 
 .mainPageSondage section>div:nth-child(2) {
@@ -350,4 +356,61 @@ footer nav a .iconeFooter:hover {
 .mainPageLeaderbord .leaderbord>div:last-child div i {
     color: rgba(3, 201, 169, 1);
     padding-left: 4px;
+}
+
+
+@media screen and (min-width: 640px) and (max-width: 1224px) {
+    .colonnePagePrincipale {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .sondage {
+        width: 30%;
+    }
+
+    .colonnesPageSondage {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .colonnesPageSondage section {
+        width: 30%;
+    }
+
+    header nav div:first-child a:nth-child(2),
+    header nav div:first-child a:nth-child(3) {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1224px) {
+    .colonnePagePrincipale {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .sondage {
+        width: 23%;
+    }
+
+    .colonnesPageSondage {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .colonnesPageSondage section {
+        width: 23%;
+    }
+
+    header nav div:first-child a:nth-child(2),
+    header nav div:first-child a:nth-child(3) {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 360px) {
+    .mainPageLeaderbord .leaderbord>div:first-child button {
+        font-size: 0.7em;
+    }
 }
