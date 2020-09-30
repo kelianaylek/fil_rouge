@@ -31,6 +31,10 @@ header nav a {
     align-items: center;
 }
 
+header nav div {
+    display: flex;
+}
+
 header nav div:first-child a:nth-child(2),
 header nav div:first-child a:nth-child(3) {
     display: none;
@@ -138,7 +142,8 @@ header nav .fa-star {
 }
 
 .mainPagePrincipale .sondageResultats button,
-.mainPageSondage section button {
+.mainPageSondage section button,
+.mainPageShopping section button {
     background-color: #dae9f4;
     border: none;
     border-radius: 2px;
@@ -151,6 +156,7 @@ header nav .fa-star {
     outline: none;
     /* transition: background-color 0.5s, color 1s ease; */
 }
+
 
 .mainPagePrincipale .sondageResultats button:hover,
 .mainPageSondage section button:hover {
@@ -234,21 +240,24 @@ footer nav a .iconeFooter:hover {
 }
 
 
-.mainPageSondage section {
+.mainPageSondage section,
+.mainPageShopping section {
     background-color: #5e5e5f;
     margin-bottom: 2vh;
     text-align: center;
     border-radius: 5px 5px 5px 5px;
 }
 
-.mainPageSondage section>div {
+.mainPageSondage section>div,
+.mainPageShopping section>div {
     display: flex;
     align-items: baseline;
     padding: 2vh;
     justify-content: space-between;
 }
 
-.mainPageSondage section>div h3 {
+.mainPageSondage section>div h3,
+.mainPageShopping section>div h3 {
     display: flex;
     align-items: baseline;
     margin-right: 6px;
@@ -257,23 +266,28 @@ footer nav a .iconeFooter:hover {
     font-size: 1.1em;
 }
 
-.mainPageSondage section>div>div {
+.mainPageSondage section>div>div,
+.mainPageShopping section>div div {
     display: flex;
 }
 
-.mainPageSondage section>div i {
+.mainPageSondage section>div i,
+.mainPageShopping section>div i {
     padding-left: 1px;
 }
 
-.mainPageSondage section>div .fa-star {
+.mainPageSondage section>div .fa-star,
+.mainPageShopping section>div .fa-star {
     color: rgba(3, 201, 169, 1);
 }
 
-.mainPageSondage section>div .fa-star-o {
+.mainPageSondage section>div .fa-star-o,
+.mainPageShopping section>div .fa-star-o {
     color: #fff;
 }
 
-.mainPageSondage section>div:nth-child(2) {
+.mainPageSondage section>div:nth-child(2),
+.mainPageShopping section>div:nth-child(2) {
     padding: 1vh;
     background-color: #3f4040;
     display: flex;
@@ -358,54 +372,102 @@ footer nav a .iconeFooter:hover {
     padding-left: 4px;
 }
 
+/* Page shopping, css reprit de la page sondage*/
+.mainPageShopping .colonnesPageShopping {
+    margin-top: 8vh;
+}
+
+.mainPageShopping section button:first-child {
+    background-color: rgba(3, 201, 169, 1);
+    color: #000;
+}
+
+.mainPageShopping .btnValiderSondage {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8vh;
+}
+
+.mainPageShopping .btnValiderSondage button {
+    margin: 1vh 0 1vh 0;
+    width: 80%;
+    outline: none;
+    border: 1px solid #272625;
+    padding: 8px 8px;
+    font-size: 0.9em;
+    background-color: #272625;
+    border-radius: 25px;
+    color: rgba(3, 201, 169, 1);
+}
+
+.mainPageShopping .btnValiderSondage button:hover {
+    color: #272625;
+    background-color: rgba(3, 201, 169, 1);
+}
+
+.mainPageShopping section>div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 0 0 5px;
+    background-color: #3f4040;
+    border-radius: 5px 5px 0px 0px;
+
+}
+
+.mainPageShopping section>div:first-child a {
+    color: #fff;
+
+}
+
+
 
 @media screen and (min-width: 640px) and (max-width: 1224px) {
-    .colonnePagePrincipale {
+
+    .colonnesPagePrincipale,
+    .colonnesPageSondage,
+    .colonnesPageShopping {
         display: flex;
         flex-wrap: wrap;
     }
 
-    .sondage {
-        width: 30%;
-    }
-
-    .colonnesPageSondage {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .colonnesPageSondage section {
+    .sondage,
+    .colonnesPageSondage section,
+    .colonnesPageShopping section {
         width: 30%;
     }
 
     header nav div:first-child a:nth-child(2),
     header nav div:first-child a:nth-child(3) {
         display: block;
+    }
+
+    .mainPageShopping .btnValiderSondage button {
+        width: 30%;
     }
 }
 
 @media screen and (min-width: 1224px) {
-    .colonnePagePrincipale {
+
+    .colonnesPagePrincipale,
+    .colonnesPageSondage,
+    .colonnesPageShopping {
         display: flex;
         flex-wrap: wrap;
     }
 
-    .sondage {
-        width: 23%;
-    }
-
-    .colonnesPageSondage {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .colonnesPageSondage section {
+    .sondage,
+    .colonnesPageSondage section,
+    .colonnesPageShopping section {
         width: 23%;
     }
 
     header nav div:first-child a:nth-child(2),
     header nav div:first-child a:nth-child(3) {
         display: block;
+    }
+
+    .mainPageShopping .btnValiderSondage button {
+        width: 30%;
     }
 }
 
