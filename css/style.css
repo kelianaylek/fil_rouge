@@ -145,7 +145,7 @@ header nav .fa-star {
 
 .mainPagePrincipale .sondageResultats button,
 .mainPageSondage section button,
-.mainPageShopping section button {
+.mainPageShopping section form button {
   background-color: #dae9f4;
   border: none;
   border-radius: 2px;
@@ -163,6 +163,13 @@ header nav .fa-star {
 .mainPageSondage section button:hover {
   background-color: rgba(3, 201, 169, 1);
   color: #000;
+}
+
+/* bouton de suppression d'un pari */
+.mainPageShopping section>div button:first-child {
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 /* nav du footer */
@@ -252,8 +259,13 @@ footer nav a .iconeFooter:hover {
 .mainPageShopping section>div {
   display: flex;
   align-items: baseline;
-  padding: 2vh;
+  padding: 2vh 1vh 0 2vh;
   justify-content: space-between;
+}
+
+.mainPageShopping section>div {
+  padding: 0vh 1vh 0 2vh;
+
 }
 
 .mainPageSondage section>div h3,
@@ -286,13 +298,14 @@ footer nav a .iconeFooter:hover {
   color: #fff;
 }
 
-.mainPageSondage section>div:nth-child(2),
-.mainPageShopping section>div:nth-child(2) {
+.mainPageSondage section form,
+.mainPageShopping section form {
   padding: 1vh;
   background-color: #3f4040;
   display: flex;
   justify-content: space-around;
   border-radius: 0px 0px 5px 5px;
+  margin-top: 2vh;
 }
 
 /* main page leaderbord */
@@ -371,15 +384,20 @@ footer nav a .iconeFooter:hover {
   padding-left: 4px;
 }
 
+.mainPageLeaderbord .leaderbord>div:last-child div:last-child {
+  padding: 0;
+  margin: 0;
+}
+
 /* Page shopping, css reprit de la page sondage*/
 .mainPageShopping .colonnesPageShopping {
   margin-top: 8vh;
 }
 
-.mainPageShopping section button:first-child {
+/* .mainPageShopping section button:first-child {
   background-color: rgba(3, 201, 169, 1);
   color: #000;
-}
+} */
 
 .mainPageShopping .btnValiderSondage {
   display: flex;
@@ -408,12 +426,8 @@ footer nav a .iconeFooter:hover {
   display: flex;
   justify-content: flex-start;
   padding: 5px 0 0 5px;
-  background-color: #3f4040;
+  background-color: #5e5e5f;
   border-radius: 5px 5px 0px 0px;
-}
-
-.mainPageShopping section>div:first-child a {
-  color: #fff;
 }
 
 /* pop up de connexion */
