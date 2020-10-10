@@ -16,3 +16,5 @@ Le score que l'on obtient correspond à la somme des niveaux de difficulté des 
 On peut voir notre score et notre pseudo sur la page de classement.
 
 Pour quitter notre session, relancer la page du site en fermant le navigateur (pas simplement rafraîchir) sessionStorage.clear().
+
+PS : Pour le pseudo, il ne s'affiche pas dans la navbar en version mobile, pour ne pas surcharger celle-ci. Il est visible au format desktop par exemple.

@@ -1,4 +1,3 @@
-// Tableau d'objet et chaque objet c'est un pari
 const betList = [
   {
     title: "Qui sera le vainqueur ?",
@@ -50,24 +49,10 @@ const betList = [
   },
 ];
 
-// const responses = [];
-
 const userHaveBets = sessionStorage.getItem("betListChoose") !== null;
 const betListChoose = userHaveBets
   ? JSON.parse(sessionStorage.getItem("betListChoose"))
   : [];
-
-// if (userHaveBets) {
-//   if (sessionStorage.getItem("betListChoose") == "") {
-//     betListChoose = [];
-//     console.log("no");
-//   } else {
-//     betListChoose = JSON.parse(sessionStorage.getItem("betListChoose"));
-//     console.log("yes");
-//   }
-// } else {
-//   betListChoose = [];
-// }
 
 function displayDifficulty(difficulty) {
   var stars = "";
@@ -92,24 +77,26 @@ var isOnLeaderbordPage = lastWordUrl == "leaderbord.html";
 
 // Ajout de l'username rentré par l'utilisateur dans une variable
 function addUsername() {
-  if (isOnShoppingPage || isOnMainPage || isOnBetPage || isOnLeaderbordPage) {
-    var beforeNewElement = document.querySelector(
-      "header nav>div:nth-child(2)"
-    );
-    $(beforeNewElement).append("<a></a>");
-    var newElement = document.querySelector(
-      "header nav div:nth-child(2) a:last-child"
-    );
-    var getUsername = sessionStorage.getItem("username");
-    newElement.textContent = getUsername;
-  }
-  if (isOnLeaderbordPage) {
-    var usernameIntoLeaderbord = document.querySelector(
-      ".mainPageLeaderbord .leaderbord>div:last-child div:first-child p"
-    );
-    var getUsername = sessionStorage.getItem("username");
-    usernameIntoLeaderbord.textContent = getUsername;
-    usernameIntoLeaderbord.style.color = "rgba(3, 201, 169, 1)";
+  if(sessionStorage.getItem("username") !== ""){
+    if (isOnShoppingPage || isOnMainPage || isOnBetPage || isOnLeaderbordPage) {
+      var beforeNewElement = document.querySelector(
+        "header nav>div:nth-child(2)"
+      );
+      $(beforeNewElement).append("<a></a>");
+      var newElement = document.querySelector(
+        "header nav div:nth-child(2) a:last-child"
+      );
+      var getUsername = sessionStorage.getItem("username");
+      newElement.textContent = getUsername;
+    }
+    if (isOnLeaderbordPage) {
+      var usernameIntoLeaderbord = document.querySelector(
+        ".mainPageLeaderbord .leaderbord>div:last-child div:first-child p"
+      );
+      var getUsername = sessionStorage.getItem("username");
+      usernameIntoLeaderbord.textContent = getUsername;
+      usernameIntoLeaderbord.style.color = "rgba(3, 201, 169, 1)";
+    }
   }
 }
 // Affichage de l'username
@@ -125,42 +112,81 @@ function connexion() {
     var inputUserName = document.querySelector("form input[name = 'username']");
     sessionStorage.setItem("username", inputUserName.value);
     displayUsername();
+    var errorConnexion = document.querySelector(".errorConnexion");
+
+    if(sessionStorage.getItem("username") !== ""){
+      closePopup();
+    }else{
+      if(errorConnexion == null){
+        errorConnexion = '<div class="errorConnexion">Merci de remplir le champ ci-dessus</div>'
+        $('.popup form').append(errorConnexion)
+      }
+    }
   }
   if (isOnMainPage) {
     formConnexion.addEventListener("submit", onSubmit);
   }
 }
 function displayBetsOnBetPage() {
-  for (i = 0; i < betList.length; i++) {
+  const customBetList = [];
+
+  for(let i = 0; i < betList.length; i++){
+    var currentBet = betList[i];
+    var isMatchFounded = false;
+    for(let j=0; j< betListChoose.length; j++){
+      var currentBetChoose = betListChoose[j];
+      if(currentBet.title === currentBetChoose.title){
+        isMatchFounded = true;
+        customBetList.push(betListChoose[j]);
+      }
+    }
+    if(!isMatchFounded){
+      customBetList.push(betList[i]);
+    }
+  }
+
+  for (i = 0; i < customBetList.length; i++) {
+    var button1Checked = "";
+    var button2Checked = "";
+    
+    if(customBetList[i].response !== undefined){
+      if(customBetList[i].answers[0].isRight == customBetList[i].response){
+        button1Checked = "checked";
+      }else{
+        button2Checked = "checked";
+      }
+    }
+  
     var sectionNewBet =
       "<section class='container'><div><h3>" +
-      betList[i].title +
+      customBetList[i].title +
       "</h3><div>" +
-      displayDifficulty(betList[i].difficulty) +
-      "</div></div><form action=''><button type='button' name='formLeftChoice' onclick='makeBet(" +
+      displayDifficulty(customBetList[i].difficulty) +
+      "</div></div><form action=''><button type='button' class="+button1Checked+" name='formLeftChoice' onclick='makeBet(" +
       i +
       ", " +
-      betList[i].answers[0].isRight +
-      ");'>" +
-      betList[i].answers[0].firstChoice +
-      "</button><button type='button' name='formRightChoice' onclick='makeBet(" +
+      customBetList[i].answers[0].isRight +
+      ", this);'>" +
+      customBetList[i].answers[0].firstChoice +
+      "</button><button type='button' class="+button2Checked+" name='formRightChoice' onclick='makeBet(" +
       i +
       ", " +
-      betList[i].answers[1].isRight +
-      ");'>" +
-      betList[i].answers[1].secondChoice +
+      customBetList[i].answers[1].isRight +
+      ", this);'>" +
+      customBetList[i].answers[1].secondChoice +
       "</button></form></section>";
 
-    // sessionStorage.setItem("difficultyPoints", betList[i].difficulty);
+    // sessionStorage.setItem("difficultyPoints", customBetList[i].difficulty);
     var beforeNewBet = document.querySelector(".colonnesPageSondage");
     $(beforeNewBet).append(sectionNewBet);
   }
 }
 
-function makeBet(i, response) {
+function makeBet(i, response, button) {
+  console.log(arguments)
   for (let j = 0; j < betListChoose.length; j++) {
     if (betListChoose[j].title === betList[i].title) {
-      alert("paris déjà sélectionné");
+      alert("pari déjà sélectionné");
       return;
     }
   }
@@ -173,6 +199,7 @@ function makeBet(i, response) {
   betListChoose.push(betCopy);
   sessionStorage.setItem("difficultyPoints", betList[i].difficulty);
 
+  $(button).addClass('checked')
   // On met le tableau dans sessionStorage pour le récupérer sur la page du panier
   sessionStorage.setItem("betListChoose", JSON.stringify(betListChoose));
 }
@@ -182,20 +209,28 @@ function initShoppingPage() {
   if (isOnShoppingPage && userHaveBets) {
     // Récupération du tableau dans session storage pour afficher notre string comportant nos paris chosis
     var userBetList = sessionStorage.getItem("betListChoose");
-
     userBetList = JSON.parse(userBetList);
     var displayUserBet = "";
+
     for (let i = 0; i < userBetList.length; i++) {
+      var button1Checked = "";
+      var button2Checked = "";
+        if(userBetList[i].answers[0].isRight == userBetList[i].response){
+          button1Checked = "checked";
+        }else{
+          button2Checked = "checked";
+        }
+
       displayUserBet +=
-        `<section class='container'><div><button href='' type='button' onclick='supprBet(` +
+        `<section class='container'><div><button href='' type='button'  onclick='supprBet(` +
         i +
         `)'><i class='test fa fa-times fa-lg' aria-hidden='true'></i></button></div><div><h3>
       ${userBetList[i].title}
       </h3><div>
       ${displayDifficulty(userBetList[i].difficulty)}
-      </div></div><form><button>          
+      </div></div><form><button class="${button1Checked}">          
       ${userBetList[i].answers[0].firstChoice}
-      </button><button>
+      </button><button class="${button2Checked}">
       ${userBetList[i].answers[1].secondChoice}
       </button></form></section>`;
     }
@@ -279,6 +314,36 @@ function displayScoreInLeaderBord() {
   }
 }
 
+function displayPopup(){
+  var windowHeight = document.documentElement.clientHeight;
+  var windowWidth = document.documentElement.clientWidth;
+  var popupHeight = $(".popup").height();
+  var popupWidth = $(".popup").width();
+
+  $('.popup').css({
+    "position" : "absolute",
+    "top": windowHeight/2-popupHeight/2,
+    "left": windowWidth/2-popupWidth/2,
+  })
+}
+function closePopup(){
+    $('.backgroundPopup').fadeOut('slow');
+    $('.popup').fadeOut('slow'); 
+}
+function popupConnexion(){
+  if(sessionStorage.getItem("username") == null){
+    $('.backgroundPopup').css({
+      "opacity" : 0.6
+    });
+    $('.backgroundPopup').fadeIn('slow');
+    $('.popup').fadeIn('slow');
+    displayPopup()
+  }else{
+    $('.popup').hide();
+  }
+}
+
+
 $(document).ready(function () {
   if (sessionStorage.getItem("username") !== null) {
     displayUsername();
@@ -292,4 +357,5 @@ $(document).ready(function () {
     initValidateBet();
   }
   displayScoreInLeaderBord();
+  popupConnexion();
 });
