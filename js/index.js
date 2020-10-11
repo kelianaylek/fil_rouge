@@ -181,9 +181,7 @@ function displayBetsOnBetPage() {
     $(beforeNewBet).append(sectionNewBet);
   }
 }
-
 function makeBet(i, response, button) {
-  console.log(arguments)
   for (let j = 0; j < betListChoose.length; j++) {
     if (betListChoose[j].title === betList[i].title) {
       alert("pari déjà sélectionné");
@@ -203,7 +201,6 @@ function makeBet(i, response, button) {
   // On met le tableau dans sessionStorage pour le récupérer sur la page du panier
   sessionStorage.setItem("betListChoose", JSON.stringify(betListChoose));
 }
-
 // Affichage des paris sélectionnés sur la page du panier
 function initShoppingPage() {
   if (isOnShoppingPage && userHaveBets) {
@@ -239,7 +236,6 @@ function initShoppingPage() {
     $(beforeNewBet).append(displayUserBet);
   }
 }
-
 function supprBet(i) {
   var userBetList = sessionStorage.getItem("betListChoose");
   userBetList = JSON.parse(userBetList);
@@ -248,12 +244,12 @@ function supprBet(i) {
   sessionStorage.setItem("betListChoose", userBetList);
   userBetList = sessionStorage.getItem("betListChoose");
   userBetList = JSON.parse(userBetList);
-  console.log(userBetList);
   document.location.reload(true);
 }
-
 // On attend le click sur le bouton de validation des paris
 function initValidateBet() {
+  $('.popupBetValidation').hide();
+
   var formValidateBet = document.querySelector("form[name = 'validateBet']");
   // Après le click, on exéctute la fonction de validation des paris
   function validateBet(event) {
@@ -272,34 +268,55 @@ function initValidateBet() {
           goodAnswers = goodAnswers + 1;
         }
       }
-      console.log("Ton score est de " + score + " points.");
-      console.log(
-        "Tu as eu " +
-          goodAnswers +
-          " bonnes réponses sur " +
-          userBetList.length +
-          " questions"
-      );
-    } else {
-      console.log("Aucun pari sélectionné");
     }
 
     sessionStorage.setItem("score", score);
 
     if (userHaveBets) {
       userBetList = JSON.parse(sessionStorage.getItem("betListChoose"));
+      if(sessionStorage.getItem("betListChoose") !== '[]'){
+        function popupBetValidation(){
+          $('.backgroundPopupBetValidation').css({
+            "opacity" : 0.6
+          });
+          $('.backgroundPopupBetValidation').fadeIn('slow');
+          $('.popupBetValidation').fadeIn('slow');
+          displayPopup()
+          var name = sessionStorage.getItem('username')
+          $(".popupBetValidation").append("<div>"+name+", vous avez répondu correctement à " + goodAnswers + " sur "+userBetList.length+" questions.</div><div>Votre score est de "+score+" points.</div><button class='quitPopopBets'>Quitter</button>")
+    
+      }
+      popupBetValidation();
+
+      function displayPopup(){
+        var windowHeight = document.documentElement.clientHeight;
+        var windowWidth = document.documentElement.clientWidth;
+        var popupHeight = $(".popupBetValidation").height();
+        var popupWidth = $(".popupBetValidation").width();
+      
+        $('.popupBetValidation').css({
+          "position" : "absolute",
+          "top": windowHeight/2-popupHeight/2,
+          "left": windowWidth/2-popupWidth/2,
+        })
+      }
+      displayPopup();
+
+      function initClosePopup(){
+        var buttonClosePopup = document.querySelector(".popupBetValidation button")
+        buttonClosePopup.addEventListener("click", closePopupValidateBet)
+        }
+        initClosePopup();
+      }
       userBetList = userBetList.splice(0, 0);
       userBetList = JSON.stringify(userBetList);
       sessionStorage.setItem("betListChoose", userBetList);
-      document.location.reload(true);
-      alert(score);
     }
   }
   if (isOnShoppingPage) {
     formValidateBet.addEventListener("submit", validateBet);
   }
 }
-
 function displayScoreInLeaderBord() {
   var displayScore = sessionStorage.getItem("score");
   if (displayScore !== null) {
@@ -313,7 +330,6 @@ function displayScoreInLeaderBord() {
     displayScoreOnNavbar.textContent = displayScore;
   }
 }
-
 function displayPopup(){
   var windowHeight = document.documentElement.clientHeight;
   var windowWidth = document.documentElement.clientWidth;
@@ -329,6 +345,11 @@ function displayPopup(){
 function closePopup(){
     $('.backgroundPopup').fadeOut('slow');
     $('.popup').fadeOut('slow'); 
+}
+function closePopupValidateBet(){
+  $('.backgroundPopupBetValidation').fadeOut('slow');
+  $('.popupBetValidation').fadeOut('slow'); 
+  document.location.reload(true);
 }
 function popupConnexion(){
   if(sessionStorage.getItem("username") == null){

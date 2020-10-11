@@ -146,7 +146,8 @@ header nav .fa-star {
 .mainPagePrincipale .sondageResultats button,
 .mainPageSondage section button,
 .mainPageShopping section form button,
-.popup form button {
+.popup form button,
+.popupBetValidation button {
   background-color: #dae9f4;
   border: none;
   border-radius: 2px;
@@ -164,7 +165,8 @@ header nav .fa-star {
 .mainPageSondage section button:hover,
 .mainPageSondage section .checked,
 .mainPageShopping section .checked,
-.popup form button:hover {
+.popup form button:hover,
+.popupBetValidation button:hover {
   background-color: rgba(3, 201, 169, 1);
   color: #000;
 }
@@ -431,7 +433,7 @@ footer nav a .iconeFooter:hover {
 }
 
 /* pop up de connexion */
-.popup{
+.popup, .popupBetValidation{
   display: none;
   border: 2px solid #000;
   border-radius: 5px;
@@ -455,7 +457,7 @@ footer nav a .iconeFooter:hover {
   color: red;
 }
 
-.backgroundPopup{
+.backgroundPopup, .backgroundPopupBetValidation{
   position: absolute;
   top: 0;
   left: 0;
@@ -465,6 +467,16 @@ footer nav a .iconeFooter:hover {
   display: none;
   z-index: 1;
 }
+/* pop up de connexionde validation des paris*/
+
+.popupBetValidation{
+  display: block;
+}
+.popupBetValidation div:nth-child(2){
+  padding : 5px 0 5px 0;
+}
+
+
 
 
 
