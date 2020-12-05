@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -58,4 +58,4 @@
     <script src="js/index.js"></script>
 </body>
 
-</html>
+</html> -->
