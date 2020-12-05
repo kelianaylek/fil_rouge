@@ -1,14 +1,21 @@
 <?php
 
-use App\Controller\ConnexionController;
+use App\Controller\SignUpController;
+use App\Controller\SignInController;
+
 
 
 if (array_key_exists("page", $_GET)) {
 
     switch ($_GET["page"]) {
-        case 'connexion':
-            $controller = new ConnexionController();
-            $controller->connexion();
+        case 'signUp':
+            $controller = new SignUpController();
+            $controller->signUp();
+            break;
+
+        case 'signIn':
+            $controller = new signInController();
+            $controller->signIn();
             break;
         
         
