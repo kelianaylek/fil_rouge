@@ -8,6 +8,9 @@ use App\Controller\ProfilController;
 use App\Controller\FriendsController;
 use App\Controller\CreatePollController;
 use App\Controller\CreatedPollController;
+use App\Controller\ModifyAccountSecurityController;
+use App\Controller\ModifyAccountController;
+
 
 
 if (array_key_exists("page", $_GET)) {
@@ -26,6 +29,16 @@ if (array_key_exists("page", $_GET)) {
         case 'deconnexion':
             $controller = new DeconnexionController();
             $controller->deconnexion();
+            break;
+
+        case 'modifyAccountSecurity':
+            $controller = new ModifyAccountSecurityController();
+            $controller->modifyAccountSecurity();
+            break;
+
+        case 'modifyAccount':
+            $controller = new ModifyAccountController();
+            $controller->modifyAccount();
             break;
 
         case 'home':

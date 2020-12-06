@@ -5,16 +5,11 @@ use Core\Database;
 
 class ProfilModel extends Database{
 
-    // public function signIn($mailConnect, $passwordConnect){
-    //     // Select users informations to check the connexion 
-    //     $signIn = $this->query("SELECT * FROM users WHERE user_email = '$mailConnect' AND user_password = '$passwordConnect'");
-    //     return ($signIn);
-    // }
-
-    // public function isOnline($me, $isOnline){
-    //     // When user is connected, user is set online 
-    //     $poll = $this->pdo->query("UPDATE users SET user_isOnline = '$isOnline' WHERE user_id = '$me'");
-    // } 
+    public function myPolls($me){
+        // Select all user's polls 
+        $reqAllMyPolls = $this->query("SELECT * FROM polls WHERE accepted_id = '$me' ORDER BY poll_id DESC ");
+        return ($reqAllMyPolls);
+    }
 }
 
 

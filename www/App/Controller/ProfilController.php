@@ -10,6 +10,9 @@ class ProfilController{
 
     public function profil(){
 
+        // Get all user polls 
+        $allMyPolls = $this->model->myPolls($_SESSION['id']);
+
         require ROOT."/App/View/ProfilView.php";
 
     }

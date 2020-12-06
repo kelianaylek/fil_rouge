@@ -16,9 +16,7 @@
         include "inc/header.inc.php"
     ?>
 
-    <!-- Afficher le user name -->
-    <h1>Bienvenue <?php echo($user[0]->user_name)?></h1>
-
+<br><br><br>
     <h2>Mes sondages en cours :</h2>
     <table>
             <thead>
