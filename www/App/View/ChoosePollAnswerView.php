@@ -9,27 +9,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title>Projet fil rouge</title>
 </head>
-
 <body>
-    <!-- HEADER -->
-    <?php
-        include "inc/header.inc.php"
-    ?>
-
-<br><br><br>
-
-
-        <h2>Tous mes sondages</h2>
-        <h2>Modifier mes infos personnelles</h2>
-
-        <a href="?page=deconnexion">Se déconnecter</a>
-
-    <?php
-        include "inc/footer.inc.php"
-    ?>
     
+<h3>Voter :</h3>
 
-    <!-- <script src="js/index.js"></script> -->
+<form action="" method="POST">
+    <button type="submit" name="chooseFirstAnswer"><?=$getPollFirstAnswer?></button>
+</form>
+<br><br>
+<form action="" method="POST">
+    <button type="submit" name="chooseSecondAnswer"><?=$getPollSecondAnswer?></button>
+</form>
+
 </body>
-
 </html>

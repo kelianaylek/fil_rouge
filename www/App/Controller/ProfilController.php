@@ -9,6 +9,7 @@ class ProfilController{
 
 
     public function profil(){
+
         require ROOT."/App/View/ProfilView.php";
 
     }

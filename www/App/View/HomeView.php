@@ -15,45 +15,74 @@
     <?php
         include "inc/header.inc.php"
     ?>
-    <!-- body avec sondage correspondants a la page du type de sondage. Apperçu du pari le plus évident, d'autres paris quand on rentre dans le pari -->
 
-    <main class="mainPagePrincipale">
-        <!-- Bouton pour rechercher un pari -->
+    <!-- Afficher le user name -->
+    <h1>Bienvenue <?php echo($user[0]->user_name)?></h1>
 
-        <form class="recherche">
-            <input type="search" placeholder="Rechercher" />
-            <button type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-        </form>
+    <h2>Mes sondages en cours :</h2>
+    <table>
+            <thead>
+                <tr>
+                    <th>Titre du sondage</th>
+                    <th>Choix numéro 1</th>
+                    <th>Choix numéro 2</th>
+                    <th>Date de création</th>
 
-        <h2>Mes sondages en cours</h2>
-        <div class="colonnesPagePrincipale">
-            <section class="sondage container">
-                <a href="?page=createdPoll">
-                    <div class="sondageImage"></div>
-                    <div class="sondageDetails">
-                        <div>
-                            <h1>Paris - Marseille</h1>
-                            <h2>Après-demain 19:00</h2>
-                        </div>
-                        <div class="nombreDeSondages">
-                            <h3>27 choix</h3>
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </a>
-                <!-- Ajout du sondage vers le panier  -->
-                <!-- Bouton cliquable panier -->
-                <div class="sondageResultats">
-                    <!-- Les deux résultat au sondage le plus classique, poulaire -->
-                    <button>Résultat 1</button>
-                    <button>Résultat 2</button>
-                </div>
-            </section>
-        </div>
+                </tr>
+            </thead>
+            <tbody>
+        <pre>
+        </pre>
+        <?php
 
-        <h2>Les sondages en cours de mes amis</h2>
+        foreach($exeAllPolls as $user_poll) : ?>
+            <tr>
+                <td><?= $user_poll->poll_title ?></td>
+                <td><?= $user_poll->poll_answer1 ?></td>
+                <td><?= $user_poll->poll_answer2 ?></td>
+                <td><?= $user_poll->created_at ?></td>
+                <td><a href="?page=createdPoll&poll_id=<?= $user_poll->poll_id ?>">Voir le sondage</a></td>
+            </tr>
+        <?php endforeach; ?>
+            </tbody>
+        </table>
+
+
+        <h2>Les sondages en cours de mes amis :</h2>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Titre du sondage</th>
+                    <th>Choix numéro 1</th>
+                    <th>Choix numéro 2</th>
+                    <th>Date de fin</th>
+
+                </tr>
+            </thead>
+            <tbody>
+        <pre>
+        </pre>
+        <?php
+
+        foreach($friendsPolls as $friendPolls) : ?>
+            <?php
+            foreach($friendPolls as $friendPoll) : ?>
+                <tr>
+                    <td><?= $friendPoll->poll_creator ?></td>
+                    <td><?= $friendPoll->poll_title ?></td>
+                    <td><?= $friendPoll->poll_answer1 ?></td>
+                    <td><?= $friendPoll->poll_answer2 ?></td>
+                    <td><?= $friendPoll->poll_limit ?></td>
+                    <td><a href="?page=createdPoll&poll_id=<?= $friendPoll->poll_id?>">Voir le sondage</a></td>
+
+                </tr>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+            </tbody>
+        </table>
+
 
         <a href="?page=createPoll">Créer un sondage</a>
 

@@ -5,16 +5,31 @@ use Core\Database;
 
 class HomeModel extends Database{
 
-    // public function signIn($mailConnect, $passwordConnect){
-    //     // Select users informations to check the connexion 
-    //     $signIn = $this->query("SELECT * FROM users WHERE user_email = '$mailConnect' AND user_password = '$passwordConnect'");
-    //     return ($signIn);
-    // }
-
-    // public function isOnline($me, $isOnline){
-    //     // When user is connected, user is set online 
-    //     $poll = $this->pdo->query("UPDATE users SET user_isOnline = '$isOnline' WHERE user_id = '$me'");
-    // } 
+    // Select all the polls created by the user 
+    public function getAllUserPolls($userId, $currentTime){
+        $reqAllPolls = $this->query("SELECT * FROM polls WHERE accepted_id = '$userId' AND poll_limit > '$currentTime' ORDER BY poll_id DESC ");
+        return ($reqAllPolls);
+    }
+    // Select the user's name 
+    public function getUserName($userId){
+        $reqUserName = $this->query("SELECT * FROM users WHERE user_id = '$userId'");
+        return ($reqUserName);
+    }
+    // Select the user's friends's list 
+    public function friendsIdList($me){
+        $reqfriendsId = $this->query("SELECT friend_id FROM friends WHERE user_id = '$me'");
+        return ($reqfriendsId);
+    }   
+    // Select all user's friends's name 
+    public function friendName($friendId){
+        $reqCurrentFriendName = $this->query("SELECT user_name FROM users WHERE user_id = '$friendId'");
+        return ($reqCurrentFriendName);
+    }
+    // Select all friends's current polls 
+    public function currentFriendsPolls($friendId, $currentDateTime){
+        $reqCurrentFriendsPolls = $this->query("SELECT * FROM polls WHERE accepted_id = '$friendId' AND poll_limit > '$currentDateTime' ORDER BY created_at DESC");
+        return ($reqCurrentFriendsPolls);
+    }
 }
 
 

@@ -62,7 +62,6 @@ class SignUpController{
         }
         require ROOT."/App/View/SignUpView.php";
     }
-    
 }
 
 

@@ -18,14 +18,35 @@
 
 <br><br><br>
 
-        <h2>Détails du sondage</h2>
+<table>
+        <thead>
+            <tr>
+                <th>Titre du sondage</th>
+                <th>Choix numéro 1</th>
+                <th>Choix numéro 2</th>
+                <th>Date de création</th>
+                <th>Date de fin</th>
 
-        <h2>Voter</h2>
-        <h3>Choix 1</h3>
-        <h3>Choix 2</h3>
+            </tr>
+        </thead>
+        <tbody>
+    <pre>
+   
+    </pre>
+    <?php
+    foreach($getPoll as $poll) : ?>
+        <tr>
+            <td><?= $poll->poll_title ?></td>
+            <td><?= $poll->poll_answer1 ?></td>
+            <td><?= $poll->poll_answer2 ?></td>
+            <td><?= $poll->created_at ?></td>
+            <td><?= $poll->poll_limit ?></td>
+        </tr>
+    <?php endforeach; ?>
+        </tbody>
+    </table>
 
 
-        <a href="?page=home">Home page</a>
 
     <?php
         include "inc/footer.inc.php"

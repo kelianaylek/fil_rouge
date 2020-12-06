@@ -48,18 +48,6 @@ class signInController{
         }
         require ROOT."/App/View/SignInView.php";
         }
-   
-
-    // public function deconnexion(){
-    //     // Session is destroyed when user id disconnected 
-    //     session_destroy();
-    //     // user go offline
-    //     $isOnline = 0;
-    //     $goOffline = $this->model->isOnline($_SESSION['id'], $isOnline); 
-
-    //     // require ROOT."/App/View/DeconnexionView.php";
-    // }
-
     
 }
 

@@ -9,12 +9,12 @@
 <body>
 
 <h2>Résultats :</h2>
-<!-- 
+
 <h3><?=$getPollFirstAnswer?> : <?=$votesAnswer1Percents?>%</h3>
 
 <h3><?=$getPollSecondAnswer?> : <?=$votesAnswer2Percents?>%</h3>
 
-<h3>Total votes : <?=$totalVotes?></h3> -->
+<h3>Total votes : <?=$totalVotes?></h3>
 
 
 
@@ -25,7 +25,6 @@
         <button class="sendMessage" type="submit" name="sendMessage">Envoyer</button>
     </form>
 
-    <a href="?page=home">Retour à l'accueil</a>
  
 
 </body>

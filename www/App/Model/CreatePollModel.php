@@ -5,16 +5,17 @@ use Core\Database;
 
 class CreatePollModel extends Database{
 
-    // public function signIn($mailConnect, $passwordConnect){
-    //     // Select users informations to check the connexion 
-    //     $signIn = $this->query("SELECT * FROM users WHERE user_email = '$mailConnect' AND user_password = '$passwordConnect'");
-    //     return ($signIn);
-    // }
-
-    // public function isOnline($me, $isOnline){
-    //     // When user is connected, user is set online 
-    //     $poll = $this->pdo->query("UPDATE users SET user_isOnline = '$isOnline' WHERE user_id = '$me'");
-    // } 
+      // User create a poll 
+    function createPoll($pollCreator, $limitDate){
+        $poll = $this->pdo->prepare("INSERT INTO polls (poll_title, poll_answer1, poll_answer2, poll_limit, accepted_id, poll_creator) 
+        VALUES (?,?,?,?,?,?)");
+        $poll->execute(array($_POST['poll_title'],$_POST['poll_answer1'],$_POST['poll_answer2'],$limitDate,$_SESSION['id'],$pollCreator));
+    }
+    // Find the poll just created
+    function findPollId(){
+        $pollId = $this->query("SELECT poll_id FROM polls ORDER BY poll_id DESC LIMIT 1 ");
+        return ($pollId);
+    }
 }
 
 

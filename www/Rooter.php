@@ -2,6 +2,7 @@
 
 use App\Controller\SignUpController;
 use App\Controller\SignInController;
+use App\Controller\DeconnexionController;
 use App\Controller\HomeController;
 use App\Controller\ProfilController;
 use App\Controller\FriendsController;
@@ -22,9 +23,14 @@ if (array_key_exists("page", $_GET)) {
             $controller->signIn();
             break;
 
+        case 'deconnexion':
+            $controller = new DeconnexionController();
+            $controller->deconnexion();
+            break;
+
         case 'home':
             $controller = new HomeController();
-            $controller->userPolls();
+            $controller->userAndFriendsPolls();
             break;
 
         case 'createPoll':
@@ -34,7 +40,9 @@ if (array_key_exists("page", $_GET)) {
 
         case 'createdPoll':
             $controller = new CreatedPollController();
-            $controller->createdPoll();
+            $controller->createdPoll();   
+            $controller->saveMessage();
+            $controller->getMessages();  
             break;
 
         case 'profil':
