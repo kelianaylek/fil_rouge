@@ -62,13 +62,21 @@ class CreatedPollModel extends Database{
         $getLastMessage = $this->query("SELECT message_content FROM messages WHERE poll_id = '$pollId' ORDER BY message_date DESC LIMIT 1");
         return ($getLastMessage);
     }
-
-
     // Get all messages send in a poll 
     public function getMessages($pollId){
         $getMessages = $this->query("SELECT * FROM messages WHERE poll_id = '$pollId' ORDER BY message_date DESC");
         return ($getMessages);
     } 
+
+    public function getUserScore($userId){
+        $getUserScore = $this->query("SELECT user_score FROM users WHERE user_id = '$userId'");
+        return ($getUserScore);
+    } 
+    public function updateUserScore($newUserScore, $userId){
+        $updateUserScore = $this->query("UPDATE users SET user_score = '$newUserScore' WHERE user_id = '$userId'");
+        return ($updateUserScore);
+    }
+
 }
 
 

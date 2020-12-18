@@ -28,7 +28,7 @@ class signInController{
                         $_SESSION['user_name'] = $reqLogin[0]->user_name;
                         $_SESSION['user_mail'] = $reqLogin[0]->user_email;
                         $_SESSION['user_password'] = $reqLogin[0]->user_password;
-
+                        $_SESSION['user_score'] = $reqLogin[0]->user_score;
                         // User is now online 
                         $isOnline = 1;
 

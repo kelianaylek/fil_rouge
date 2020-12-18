@@ -142,6 +142,15 @@ class CreatedPollController{
                         $newPollFirstAnswerVotes =  $getPollFirstAnswerVotes + 1;
                         $voteAnswer1 = $this->model->voteAnswer1($pollId, $newPollFirstAnswerVotes);
 
+                        $getUserScore = $this->model->getUserScore($_SESSION["id"]);
+                        $userScore = $getUserScore[0]->user_score;
+
+                        $newUserScore = $userScore + 1;
+                        $updateUserScore = $this->model->updateUserScore($newUserScore, $_SESSION["id"]);
+
+                        $getNewUserScore = $this->model->getUserScore($_SESSION["id"]);
+                        $_SESSION["user_score"] = $getNewUserScore[0]->user_score;
+
                         return $this->pollResult($pollId);
                         return $this->getMessages();
 
@@ -161,21 +170,26 @@ class CreatedPollController{
                     $newPollFirstAnswerVotes =  $getPollFirstAnswerVotes + 1;
                     $voteAnswer1 = $this->model->voteAnswer2($pollId, $newPollFirstAnswerVotes);
 
-                    return $this->pollResult($pollId);
-                    return $this->getMessages();
+                   
+                    $getUserScore = $this->model->getUserScore($_SESSION["id"]);
+                    $userScore = $getUserScore[0]->user_score;
+
+                    $newUserScore = $userScore + 1;
+                    $updateUserScore = $this->model->updateUserScore($newUserScore, $_SESSION["id"]);
+
+                    $getNewUserScore = $this->model->getUserScore($_SESSION["id"]);
+                    $_SESSION["user_score"] = $getNewUserScore[0]->user_score;
+
+                        return $this->pollResult($pollId);
+                        return $this->getMessages();
 
                     require ROOT."/App/View/ResultPollView.php";
                 }else{
                     echo("user has already voted");
                 }
             } 
-            
-
         }
-
     }
-
-    
 }
 
 

@@ -13,6 +13,8 @@ use App\Controller\ModifyAccountController;
 use App\Controller\SportController;
 use App\Controller\StreamingController;
 use App\Controller\TvController;
+use App\Controller\LeaderbordController;
+
 
 if (array_key_exists("page", $_GET)) {
 
@@ -83,8 +85,11 @@ if (array_key_exists("page", $_GET)) {
             $controller = new FriendsController();
             $controller->friends();
             break;
-        
-        
+
+        case 'leaderbord':
+            $controller = new LeaderbordController();
+            $controller->leaderbord();
+            break;   
     }
 } else {
     $controller = new SignUpController();
