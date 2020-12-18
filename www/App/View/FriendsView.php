@@ -18,12 +18,36 @@
 
 <br><br><br>
 
-    <h2>Ma liste d'amis</h2>
-    <h2>Amis connectés</h2>
+    <h1>Mes amis :</h1>
 
+    <?php
+    foreach($arrayOfFriendsNameArrays as $user_friend) : ?>
+        <tr>
+            <td><?= $user_friend[0]->user_name ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <h3>Amis en ligne :</h3>
+    <?php
+    foreach($arrayOnlineFriends as $onlineFriend) : ?>
+        <tr>
+            <td><?= $onlineFriend[0]->user_name ?></td>
 
-    <h2>Ajouter un ami</h2>
-    <h2>Supprimer un ami</h2>
+        </tr>
+    <?php endforeach; ?>
+
+    <h3>Ajouter un ami</h3>
+
+    <form  action="" method="POST">
+    <input type="text" name="researchedFriend" placeholder="Rechercher un utilisateur">
+    <button type="submit" name="addFriend">Ajouter comme ami</button>
+    </form>
+
+    <h2>Retirer un ami</h2>
+
+    <form action="" method="POST">
+    <input type="text" name="deletedFriend" placeholder="Rechercher un ami">
+    <button type="submit" name="supprFriend">Supprimer cet ami</button>
+    </form>
 
     <a href="?page=home">Home page</a>
 

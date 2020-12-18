@@ -26,6 +26,13 @@
     <input type="text" name="poll_answer1" placeholder="Choix numéro 1">
     <input type="text" name="poll_answer2" placeholder="Choix numéro 2">
 
+    <p>Catégorie</p>
+    <select name="pollType">
+       <option value="sport">Sport</option>
+       <option value="streaming">Streaming</option>
+       <option value="tv">TV</option>
+    ?>
+    </select>
 
     <div class="date">
 

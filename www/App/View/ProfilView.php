@@ -30,6 +30,8 @@
                 <th>Date</th>
                 <th>Date de fin</th>
                 <th>Résultats</th>
+                <th>Catégorie</th>
+
 
             </tr>
         </thead>
@@ -44,6 +46,8 @@
             <td><?= $user_poll->poll_answer2 ?></td>
             <td><?= $user_poll->created_at ?></td>
             <td><?= $user_poll->poll_limit ?></td>
+            <td><?= $user_poll->poll_type ?></td>
+
             <td><a href="?page=createdPoll&poll_id=<?= $user_poll->poll_id ?>">Voir</a></td>
         </tr>
     <?php endforeach; ?>

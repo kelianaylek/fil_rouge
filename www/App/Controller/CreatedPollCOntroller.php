@@ -91,9 +91,11 @@ class CreatedPollController{
         require ROOT."/App/View/CreatedPollView.php";
 
         // Si c'est le creator du poll qui regarde 
-        if($_SESSION["id"] == $getPollAcceptedId){
+        if($_SESSION["id"] == $getPollAcceptedId){          
+            require ROOT."/App/View/SharePollView.php";
             return $this->pollResult($pollId);
             $friendsEmailList = [];
+             
             if(isset($_POST["sharePoll"])){
                 $friendList = $this->model->getFriendsList($_SESSION["id"]);
                 for($i = 0; $i<count($friendList);$i++){
@@ -109,20 +111,14 @@ class CreatedPollController{
                     $from = $_SESSION["user_mail"];
                     $to = $friendsEmailList[$i];
                     $subject = "Viens répondre à mon sondage !";
-                    $message = "http://localhost/poo_project/www/public/index.php?page=connexion";
+                    $message = "http://localhost/fil_rouge/www/public/index.php?page=signIn";
                     $headers = "De: " . $from;
                     mail($to,$subject,$message, $headers);
                     header("Location: ../public/index.php?page=createdPoll&poll_id=$pollId");
+
                 }
             }
             return $this->getMessages();
-
-            // View pour voir les résultat           
-            require ROOT."/App/View/ResultPollView.php";    
-            
-            // View pour partager le lien par mail 
-            require ROOT."/App/View/SharePollView.php";
-
 
         // Si c'est un ami qui regarde le poll 
         }else{

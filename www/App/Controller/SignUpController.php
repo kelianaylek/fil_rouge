@@ -43,7 +43,7 @@ class SignUpController{
                             if($userPassword == $userPasswordConfirmed){
                                 // The account is created and user is redirect to connexion view 
                                 $this->model->reqCreateAccount($userName, $userMail, $userPassword);
-                                // header("Location: ../public/index.php?page=signIn");
+                                header("Location: ../public/index.php?page=signIn");
                             }else{
                                 echo('password pas pareil');
                             }

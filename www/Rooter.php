@@ -10,8 +10,9 @@ use App\Controller\CreatePollController;
 use App\Controller\CreatedPollController;
 use App\Controller\ModifyAccountSecurityController;
 use App\Controller\ModifyAccountController;
-
-
+use App\Controller\SportController;
+use App\Controller\StreamingController;
+use App\Controller\TvController;
 
 if (array_key_exists("page", $_GET)) {
 
@@ -43,6 +44,21 @@ if (array_key_exists("page", $_GET)) {
 
         case 'home':
             $controller = new HomeController();
+            $controller->userAndFriendsPolls();
+            break;
+
+        case 'sport':
+            $controller = new SportController();
+            $controller->userAndFriendsPolls();
+            break; 
+
+        case 'streaming':
+            $controller = new StreamingController();
+            $controller->userAndFriendsPolls();
+            break; 
+            
+        case 'tv':
+            $controller = new TvController();
             $controller->userAndFriendsPolls();
             break;
 

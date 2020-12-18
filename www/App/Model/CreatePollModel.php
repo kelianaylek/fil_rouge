@@ -6,10 +6,10 @@ use Core\Database;
 class CreatePollModel extends Database{
 
       // User create a poll 
-    function createPoll($pollCreator, $limitDate){
-        $poll = $this->pdo->prepare("INSERT INTO polls (poll_title, poll_answer1, poll_answer2, poll_limit, accepted_id, poll_creator) 
-        VALUES (?,?,?,?,?,?)");
-        $poll->execute(array($_POST['poll_title'],$_POST['poll_answer1'],$_POST['poll_answer2'],$limitDate,$_SESSION['id'],$pollCreator));
+    function createPoll($pollCreator, $limitDate, $pollType){
+        $poll = $this->pdo->prepare("INSERT INTO polls (poll_title, poll_answer1, poll_answer2, poll_limit, accepted_id, poll_creator, poll_type) 
+        VALUES (?,?,?,?,?,?,?)");
+        $poll->execute(array($_POST['poll_title'],$_POST['poll_answer1'],$_POST['poll_answer2'],$limitDate,$_SESSION['id'],$pollCreator, $pollType));
     }
     // Find the poll just created
     function findPollId(){

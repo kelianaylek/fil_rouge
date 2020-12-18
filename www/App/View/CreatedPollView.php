@@ -26,7 +26,7 @@
                 <th>Choix numéro 2</th>
                 <th>Date de création</th>
                 <th>Date de fin</th>
-
+                <th>Catégorie</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +41,8 @@
             <td><?= $poll->poll_answer2 ?></td>
             <td><?= $poll->created_at ?></td>
             <td><?= $poll->poll_limit ?></td>
+            <td><?= $poll->poll_type ?></td>
+
         </tr>
     <?php endforeach; ?>
         </tbody>
