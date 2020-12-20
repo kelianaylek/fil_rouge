@@ -14,6 +14,8 @@ use App\Controller\SportController;
 use App\Controller\StreamingController;
 use App\Controller\TvController;
 use App\Controller\LeaderbordController;
+use App\Controller\ChatController;
+
 
 
 if (array_key_exists("page", $_GET)) {
@@ -89,6 +91,11 @@ if (array_key_exists("page", $_GET)) {
         case 'leaderbord':
             $controller = new LeaderbordController();
             $controller->leaderbord();
+            break;  
+
+        case 'chat':
+            $controller = new ChatController();
+            $controller->chat();
             break;   
     }
 } else {
