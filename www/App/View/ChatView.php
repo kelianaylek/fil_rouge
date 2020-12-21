@@ -8,10 +8,21 @@
 </head>
 <body>
 
+<br><br><br>
 
-<div id="messages"></div>
+<!-- <?php
 
- 
+foreach($getMessages as $getMessage) : ?>
+            <tr>
+                <br>
+                <td><?= $getMessage->user_name ?> : </td>
+                <td><?= $getMessage->message_content ?> </td>
+                <td>(<?= $getMessage->message_date ?>)</td>
+                <br>
+            </tr>
+<?php endforeach;
+?> -->
+
 
 </body>
 </html>

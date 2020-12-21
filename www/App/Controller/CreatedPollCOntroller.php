@@ -39,33 +39,7 @@ class CreatedPollController{
        require ROOT."/App/View/ResultsPollView.php";
     }
 
-    public function saveMessage(){
-        if(isset($_POST["sendMessage"])){
-            $pollId = $_GET["poll_id"];
-
-            // get current message 
-            $currentMessage = $_POST["message"];
-            
-            $getLastMessage = $this->model->getLastMessage($pollId);
-            if(count($getLastMessage) !== 0){
-                $lastMessage = $getLastMessage[0]->message_content;
-                 header("Location: ../public/index.php?page=createdPoll&poll_id=$pollId");
-
-            }
-          
-            if($currentMessage !== ""){
-                    if(isset($_POST['message'])){
-                        $pollId = $_GET["poll_id"];
-                        $getUsername = $this->model->sendMessage($pollId, $_SESSION["id"], $_SESSION["user_name"], $currentMessage);
-                    }
-            }else{
-                echo('Merci de ne pas mettre un message vide');
-            }
-        }else{
-        }
-   
-    }
-
+  
     // Display poll's messages 
     public function getMessages(){
         $pollId = $_GET["poll_id"];
@@ -81,18 +55,25 @@ class CreatedPollController{
         <?php endforeach;
     }
 
+
+
     public function createdPoll(){
+
         $pollId = $_GET["poll_id"];
+        
         $getPoll = $this->model->getPoll($pollId);
         $getPollAcceptedId = $getPoll[0]->accepted_id;
         $getPollFirstAnswer = $getPoll[0]->poll_answer1;
         $getPollSecondAnswer = $getPoll[0]->poll_answer2;
+                        
 
         require ROOT."/App/View/CreatedPollView.php";
 
         // Si c'est le creator du poll qui regarde 
-        if($_SESSION["id"] == $getPollAcceptedId){          
+        if($_SESSION["id"] == $getPollAcceptedId){   
+       
             require ROOT."/App/View/SharePollView.php";
+
             return $this->pollResult($pollId);
             $friendsEmailList = [];
              
@@ -115,9 +96,10 @@ class CreatedPollController{
                     $headers = "De: " . $from;
                     mail($to,$subject,$message, $headers);
                     header("Location: ../public/index.php?page=createdPoll&poll_id=$pollId");
-
                 }
             }
+           
+
             return $this->getMessages();
 
         // Si c'est un ami qui regarde le poll 
@@ -131,6 +113,8 @@ class CreatedPollController{
 
                 require ROOT."/App/View/ResultPollViewView.php";
             }
+
+            
             // Choix 1
             if(isset($_POST["chooseFirstAnswer"])){
                 $whohasVoted = $this->model->whohasVoted($pollId, $_SESSION["id"]);
@@ -152,7 +136,7 @@ class CreatedPollController{
                         $_SESSION["user_score"] = $getNewUserScore[0]->user_score;
 
                         return $this->pollResult($pollId);
-                        return $this->getMessages();
+                        // return $this->getMessages();
 
 
                         require ROOT."/App/View/ResultPollView.php";
@@ -181,11 +165,13 @@ class CreatedPollController{
                     $_SESSION["user_score"] = $getNewUserScore[0]->user_score;
 
                         return $this->pollResult($pollId);
-                        return $this->getMessages();
+                        // return $this->getMessages();
 
                     require ROOT."/App/View/ResultPollView.php";
                 }else{
                     echo("user has already voted");
+                    
+
                 }
             } 
         }

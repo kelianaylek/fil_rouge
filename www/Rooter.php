@@ -74,8 +74,7 @@ if (array_key_exists("page", $_GET)) {
         case 'createdPoll':
             $controller = new CreatedPollController();
             $controller->createdPoll();   
-            $controller->saveMessage();
-            $controller->getMessages();  
+     
             break;
 
         case 'profil':

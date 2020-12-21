@@ -21,11 +21,12 @@
 <div id="messages"></div>
 
     <form method="POST">
-        <input class="message" type="text" name="message" id="">
+        <input type="text" class="message" name="message">
         <button class="sendMessage" type="submit" name="sendMessage">Envoyer</button>
     </form>
 
- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../public/assets/js/app.js"></script>
 
 </body>
 </html>
