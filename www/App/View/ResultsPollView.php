@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../public/assets/css/style.css" />
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 
 <div id="messages"></div>
 
-    <form method="POST">
+    <form style="margin-bottom: 100px;" method="POST">
         <input type="text" class="message" name="message">
         <button class="sendMessage" type="submit" name="sendMessage">Envoyer</button>
     </form>

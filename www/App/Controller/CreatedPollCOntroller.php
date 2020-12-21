@@ -41,19 +41,7 @@ class CreatedPollController{
 
   
     // Display poll's messages 
-    public function getMessages(){
-        $pollId = $_GET["poll_id"];
-        $getMessages = $this->model->getMessages($pollId);
-        foreach($getMessages as $getMessage) : ?>
-            <tr>
-                <br>
-                <td><?= $getMessage->user_name ?> : </td>
-                <td><?= $getMessage->message_content ?> </td>
-                <td>(<?= $getMessage->message_date ?>)</td>
-                <br>
-            </tr>
-        <?php endforeach;
-    }
+
 
 
 

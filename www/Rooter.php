@@ -94,9 +94,25 @@ if (array_key_exists("page", $_GET)) {
 
         case 'chat':
             $controller = new ChatController();
-            $controller->chat();
-            break;   
+            $controller->sendMessage();
+            break;  
     }
+
 } else {
     $controller = new SignUpController();
+}
+
+
+if (array_key_exists("action", $_GET)){
+    switch ($_GET["action"]){
+     
+        case 'getMessagesFromPoll':
+            $controller = new ChatController();
+            $controller->getMessagesFromPoll();
+            break;  
+        case 'getOnlineFriends':
+            $controller = new FriendsController();
+            $controller->getOnlineFriends();
+            break;  
+    }
 }
